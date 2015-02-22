@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "First post using Jekyll & github.ui"
+title:  "First post using Jekyll & github.io"
 date:   2015-02-22 12:45:00
 categories: jekyll update
 ---
