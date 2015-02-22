@@ -9,8 +9,16 @@ url: "http://sunkay.github.io" # the base hostname & protocol for your site
 twitter_username: sunkay
 github_username:  sunkay
 
+paginate:         1
+
+
 # Build settings
 markdown: kramdown
 
 highlighter: pygments
 
+# Permalinks
+permalink:        pretty
+
+# This is the list of pages to incldue in the header of the website.
+pages_list:       {'About':'/about','Archive':'/archive','Feed':'/atom.xml'}
