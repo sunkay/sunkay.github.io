@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to sunkay's blog!"
 date:   2015-02-22 11:56:49
 categories: jekyll update
 ---
