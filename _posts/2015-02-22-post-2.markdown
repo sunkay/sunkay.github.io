@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Researching good Jekyll themes with bootstrap"
+date:   2015-02-22 8:45:00
+categories: jekyll themes
+---
+
+So, this whole Jekyll blog thing has got me hooked. I have been searching for how others are doing it and if there are any good solutions for non techies to do this:
+
+- [Octopress][octopress] looks like a tool, but a lot of people seem to hate it. Did not dig deeper into it...
+- [shiori][shiori] looks like a minimalist theme
+- [solo][solo] looks even more minimalistic
+
+I am hoping to keep adding posts & slowly update the design of this blog to suit my needs. 
+
+
+[octopress]: http://octopress.org
+[shiori]: 	 https://github.com/ellekasai/shiori
+
