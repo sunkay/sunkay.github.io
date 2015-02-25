@@ -11,6 +11,8 @@ While using aldeed:Autoform and in  Meteor.methods, I was using the check argume
 I20150224-21:44:11.402(-5)?   at [object Object]._.extend.throwUnlessAllArgumentsHaveBeenChecked (/Users/sunil/meteor/meteor-boiler/.meteor/local/build/programs/server/packages/check.js:375:13)
 
 Here is my original meteor method, which threw this error....
+
+{% highlight javascript %}
 '
 Meteor.methods({
 	submitPost: function(post){
@@ -21,10 +23,14 @@ Meteor.methods({
 		console.log("in submit post: "+post);
 	}
 `
+{% endhighlight javascript %}
+
 The issue is that autoform sends in 3 different arguments to Meteor method. We need to check all the arguments for the check to pass successfully....
 
 Changing to this should work:
 '
+
+{% highlight javascript %}
 Meteor.methods({
 	submitPost: function(post, modifier, docID){
 		check(post, {
@@ -35,6 +41,8 @@ Meteor.methods({
 		check(docId, Match.Any);
 		console.log("in submit post: "+post);
 	}
+{% endhighlight javascript %}
+
 `
 - Resources:
    - [audit argument checks package][check]
