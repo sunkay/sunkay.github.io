@@ -7,8 +7,12 @@ categories: meteor
 
 While using aldeed:Autoform and in  Meteor.methods, I was using the check argument, but was getting the following  error and stack trace
 
+{% highlight javascript %}
+
 20150224-21:44:11.402(-5)? Exception while invoking method 'submitPost' Error: Did not check() all arguments during call to 'submitPost'
 I20150224-21:44:11.402(-5)?   at [object Object]._.extend.throwUnlessAllArgumentsHaveBeenChecked (/Users/sunil/meteor/meteor-boiler/.meteor/local/build/programs/server/packages/check.js:375:13)
+{% endhighlight javascript %}
+
 
 Here is my original meteor method, which threw this error....
 
