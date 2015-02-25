@@ -9,13 +9,13 @@ Meteor audit-arguments-check is an interesting package, that gets little notice 
 
 Lets compare both of these on atmosphere:
 
-aldeed:autoform
+- aldeed:autoform
    - App Installs : 6,700
    - Stars : 128
 
 What about for 
 
-audit-argument-checks 
+- audit-argument-checks 
    - App Installs : 2,500
    - Stars : 4
 
@@ -23,7 +23,7 @@ So, autoform is way more popular than the security sanity checks for input.
 
 Documentation or references for the usage of audit-argument-checks also is sorely lacking. But, there are some excellent resources that developers can read to make sure they are securing their applications. 
 
-The easy way to do secure your app is to do the following: `meteor add audit-argument-checks`
+The easy way to secure your app is to do the following: `meteor add audit-argument-checks`
 
 This package causes Meteor to require that all arguments passed to methods and publish functions are checked. Any method that does not pass each one of its arguments to check will throw an error, which will be logged on the server and which will appear to the client as a 500 Internal server error. This is a simple way to help ensure that your app has complete check coverage.
 
@@ -33,10 +33,10 @@ Then you can use the Check(value, pattern), within your server side Meteor metho
 
 
 Resources:
-   [audit argument checks package][check]
-   [Meteor meets Malroy][emily]
-   [Meteor Security Resources][security-resources]
-   [Browser Policy][browser-policy]
+   - [audit argument checks package][check]
+   - [Meteor meets Malroy][emily]
+   - [Meteor Security Resources][security-resources]
+   - [Browser Policy][browser-policy]
 
 
 
