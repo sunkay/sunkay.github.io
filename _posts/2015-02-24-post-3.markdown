@@ -32,7 +32,7 @@ Methods and publish functions that do not need to validate their arguments can s
 Then you can use the Check(value, pattern), within your server side Meteor methods to validate the inputs before saving them to the database. This will limit cross-site scripting or injection type attacks. 
 
 
-Resources:
+- Resources:
    - [audit argument checks package][check]
    - [Meteor meets Malroy][emily]
    - [Meteor Security Resources][security-resources]
