@@ -21,4 +21,4 @@ highlighter: pygments
 permalink:        pretty
 
 # This is the list of pages to incldue in the header of the website.
-pages_list:       {'About':'/about','Archive':'/archive', 'sunkay':'https://github.com/sunkay','Feed':'/atom.xml'}
+pages_list:       {'About':'/about','Archive':'/archive','sunkay':'https://github.com/sunkay','Feed':'/atom.xml'}
