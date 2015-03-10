@@ -31,8 +31,8 @@ UserList = new Mongo.Collection('allusers');
 
 {% endhighlight javascript %}
 
-{% highlight javascript %}
 Router:
+{% highlight javascript %}
 // user list
 Router.route('users', {
   name: "userList",
