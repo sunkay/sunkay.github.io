@@ -20,49 +20,50 @@ Lets go through a step by step walkthrough in creating pagination for users coll
     + Check if all the tests have successfully passed
 
 Step 1: Create a large set of data
-
-This is a pattern where you want to have multiple subscriptions for a single collection. In a normal meteor application, only the signed in user information is available on the client. What if we want to create an admin page which lists a subset of users in the DB? 
-  We can create a local client collection, which is a subset of the data on the server. 
-
-We use the _publishCursor method to do this. 
-
-Server:
+----------------------------------
 {% highlight javascript %}
-Meteor.publish('allusers', function(){
-  var sub = this;
+File: /server/fixtures.js
 
-  var allusersCursor = Meteor.users.find({});
-  Mongo.Collection._publishCursor(allusersCursor, sub, 'allusers');
+  Roles.addUsersToRoles(admin_id, 'admin');
 
-  sub.ready();
+  // create 500 fake users
+  for(var i=0; i<500; i++){
+    var usr = Fake.user({
+        fields['username', 'email', 'profile.name']
+      });
 
-});
-{% endhighlight javascript %}
-
-Client:
-{% highlight javascript %}
-
-// client side only users collection
-UserList = new Mongo.Collection('allusers');
-
-{% endhighlight javascript %}
-
-Router:
-{% highlight javascript %}
-// user list
-Router.route('users', {
-  name: "userList",
-  waitOn: function(){
-    return Meteor.subscribe('allusers');
+    Accounts.createUser({
+      username: usr.username,
+      email : usr.email,
+      password : usr.username+'123',
+      profile  : {
+          //publicly visible fields like firstname goes here
+          name: usr.profile.name,
+      }
+    });  
   }
-});
 
-Template.userList.helpers({
-  allusers: function(){
-    return UserList.find();
-  }
-});
+} else {
 {% endhighlight javascript %}
+
+Step 2: Do meteor reset & run meteor to create this data
+--------------------------------------------------------
+  - cmd-line> meteor reset
+  - cmd-line> meteor
+
+Step 3: Do meteor reset & run meteor to create this data
+--------------------------------------------------------
+
+Step 4: Do meteor reset & run meteor to create this data
+--------------------------------------------------------
+
+
+Step 5: Do meteor reset & run meteor to create this data
+--------------------------------------------------------
+
+
+Step 6: Do meteor reset & run meteor to create this data
+--------------------------------------------------------
 
 - Resources:
    - [audit argument checks package][check]
