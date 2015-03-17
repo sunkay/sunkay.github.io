@@ -100,7 +100,7 @@ The route controllers for pagination follow a pattern that can be replicated for
 
 Step 4: Add the 'Load More' block to the template
 --------------------------------------------------------
-{% highlight javascript %}
+{% raw %}
 <template name="userList">
   {{#contentHeader heading="Users" currentPage="Users"}}
   <ul class="todo-list">
@@ -118,7 +118,7 @@ Step 4: Add the 'Load More' block to the template
   </ul>
   {{/contentHeader}}
 </template>
-{% endhighlight javascript %}
+{% endraw %}
 
 [boiler]: http://sunkay.github.io/meteor-boiler/
 [roadmap]: https://trello.com/b/grrlZ9pd/meteor-boilerplate
