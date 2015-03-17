@@ -24,8 +24,6 @@ Step 1: Create a large set of data
 {% highlight javascript %}
 File: /server/fixtures.js
 
-  Roles.addUsersToRoles(admin_id, 'admin');
-
   // create 500 fake users
   for(var i=0; i<500; i++){
     var usr = Fake.user({
@@ -43,34 +41,82 @@ File: /server/fixtures.js
     });  
   }
 
-} else {
 {% endhighlight javascript %}
 
 Step 2: Do meteor reset & run meteor to create this data
 --------------------------------------------------------
   - cmd-line> meteor reset
   - cmd-line> meteor
+  - cmd-line> meteor mongo
+  - cmd-line> db.users.find()
+    + make sure the user data is there...
+  - Go to http://localhost:3000
+  - Login as admin user: username: admin@y.com, [admin123]
+  - Click on Admin - Users link in the sidebar 
+  - It should list all 500 users without pagination
 
-Step 3: Do meteor reset & run meteor to create this data
+Step 3: Create a route controller [UsersListController] 
 --------------------------------------------------------
 
-Step 4: Do meteor reset & run meteor to create this data
+{% highlight javascript %}
+In lib/user-routes.js
+
+- Redirect to the controller for typical paths
+Router.route('/users', function(){
+  this.redirect('/users/paginate/10');
+}); 
+Router.route('/users/paginate', function(){
+  this.redirect('/users/paginate/10');
+}); 
+
+Router.route('/users/paginate/:usersLimit?', {
+  name: "userList",
+}); 
+
+UserListController = RouteController.extend({
+  template: 'userList',
+  increment: 10,
+  usersLimit: function(){
+    return parseInt(this.params.usersLimit) || this.increment;
+  },
+  findOptions: function(){
+    return {sort: {createdAt: -1}, limit: this.usersLimit()}
+  },
+  subscriptions: function(){
+    this.usersSub =  Meteor.subscribe('allusers', this.findOptions());
+  },
+  data: function(){
+    var nextPath = this.route.path({usersLimit: this.usersLimit() + this.increment});
+    return {
+      ready: this.usersSub.ready,
+      nextPath: nextPath
+    }
+  }
+});
+
+{% endhighlight javascript %}
+
+The route controllers for pagination follow a pattern that can be replicated for other subscriptions. 
+
+Step 4: Add the 'Load More' block to the template
 --------------------------------------------------------
+<template name="userList">
+  {{#contentHeader heading="Users" currentPage="Users"}}
+  <ul class="todo-list">
+    {{#each allusers}}
+    {{> userItem}}
+    {{/each}}
 
-
-Step 5: Do meteor reset & run meteor to create this data
---------------------------------------------------------
-
-
-Step 6: Do meteor reset & run meteor to create this data
---------------------------------------------------------
-
-- Resources:
-   - [audit argument checks package][check]
-   - [Meteor meets Malroy][emily]
-   - [Meteor Security Resources][security-resources]
-   - [Browser Policy][browser-policy]
-
+    {{#if nextPath}}
+      <div class="callout callout-info">
+        <h3>
+          <a class="load-more btn-block" href="{{nextPath}}">Load more</a>        
+        </h3>
+      </div>
+    {{/if}}
+  </ul>
+  {{/contentHeader}}
+</template>
 
 [boiler]: http://sunkay.github.io/meteor-boiler/
 [roadmap]: https://trello.com/b/grrlZ9pd/meteor-boilerplate
