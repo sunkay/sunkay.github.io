@@ -49,12 +49,16 @@ Step 5: Set deployment tasks
 Here we will setup the environment variables and deploy script, which will deploy to meteor.com once the tests succeed.
 
 Add these environment variables into codeship...
-METEOR_EMAIL
-METEOR_PASSWORD
-METEOR_TARGET
+  - METEOR_EMAIL
+  - METEOR_PASSWORD
+  - METEOR_TARGET
 
 THe following is the deploy script:
-expect -c "set timeout 60; spawn meteor deploy $METEOR_TARGET; expect "Email:" { send $METEOR_EMAIL\r; expect eof }; expect "Password:" { send $METEOR_PASSWORD\r; expect eof }"
+
+{% highlight javascript %}
+  expect -c "set timeout 60; spawn meteor deploy $METEOR_TARGET; expect "Email:" { send $METEOR_EMAIL\r; expect eof }; expect "Password:" { send $METEOR_PASSWORD\r; expect eof }"
+
+{% endhighlight javascript %}
 
 
 [cucumber]: https://velocity.readme.io/v1.0/docs/getting-started-with-cucumber
