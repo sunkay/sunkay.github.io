@@ -31,18 +31,33 @@ To show a codeship build status badge, you need to add the markdown syntax to yo
   - Scroll to the bottom and add the markdown given there to your README
   - Voila everytime you push changes, your tests will run
 
-Step 3: Test commands
+Step 3: Meteor env setup commands at codeship
 ----------------------
-  - create a test pipeline to run your tests every build
+curl -o meteor_install_script.sh https://install.meteor.com/
+chmod +x meteor_install_script.sh
+sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" meteor_install_script.sh
+./meteor_install_script.sh
+export PATH=$HOME/.meteor:$PATH
+export VELOCITY_DEBUG=1
 
-Step 4: Set environment variables
+Step 4: Testing
 ---------------------------------
+VELOCITY_CI=1 meteor --test
 
 Step 5: Set deployment tasks
 ---------------------------------
+Here we will setup the environment variables and deploy script, which will deploy to meteor.com once the tests succeed.
+
+Add these environment variables into codeship...
+METEOR_EMAIL
+METEOR_PASSWORD
+METEOR_TARGET
+
+THe following is the deploy script:
+expect -c "set timeout 60; spawn meteor deploy $METEOR_TARGET; expect "Email:" { send $METEOR_EMAIL\r; expect eof }; expect "Password:" { send $METEOR_PASSWORD\r; expect eof }"
 
 
-
+[cucumber]: https://velocity.readme.io/v1.0/docs/getting-started-with-cucumber
 [article]: http://blog.thinkful.com/post/52651178399/under-the-hood-at-thinkful-continuous-integration
 [codeship]: https://www.codeship.io/
 [webhooks]: http://www.codeaffine.com/2014/10/06/codeship-continuous-integration/
