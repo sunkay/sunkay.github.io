@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How I converted my simple react app to ES6 using babelify and gulp"
-date:   2015-09-07 8:45:00
+date:   2015-10-03 11:45:00
 categories: react, ES6, babel, gulp, babelify
 ---
 
@@ -57,7 +57,7 @@ Adding babel to Gulp file to transpile ES6 into ES5
 ----------------------------------------------------
 Add babelify npm package using ** npm add babelify --save **
 In your gulp file require babelify
-use ***transform(babilify)*** in your bundle method. Code given below... A link to the repo where this is working... 
+use ***transform(babilify)*** in your bundle method. Code given below... A link to the repo where this is working...
 
 {% highlight javascript %}
 
