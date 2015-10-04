@@ -76,7 +76,7 @@ Fix: Importing just the Link named method from the react-router module
 ---------------------------------
 {% highlight javascript %}
 import React from 'react';
-import Link from 'react-router'
+import {Link} from 'react-router'
 
 export default class Header extends React.Component {
   render(){
