@@ -4,7 +4,7 @@ title:  "Continuous Integration and deployment a React Meteor app using Codeship
 date:   2015-09-07 8:45:00
 categories: meteor, codeship, react, webhooks
 ---
-Continuous Integration and Continuous deployment once setup allows us to focus on writing software instead of worrying about all the tasks for deployment everytime we need to release. It also helps in deploying code continuosly into production and also should be able to provide tooling and mechanisms to revert back builds auto-magically.
+Continuous Integration and Continuous deployment, once it is setup allows us to focus on writing software instead of worrying about all the tasks for deployment everytime we need to release. It also helps in deploying code continuosly into production and also should be able to provide tooling and mechanisms to revert back builds auto-magically.
 
 I have been looking for modern tooling and mechanisms which will allow CI/CD.
 
@@ -48,7 +48,7 @@ Step 5: Set deployment tasks
 ---------------------------------
 Here we will setup the environment variables and deploy script, which will deploy to meteor.com once the tests succeed.
 
-Add these environment variables into codeship...
+Add these environment variables into codeship
   - METEOR_EMAIL
   - METEOR_PASSWORD
   - METEOR_TARGET
@@ -59,6 +59,9 @@ THe following is the deploy script:
   expect -c "set timeout 60; spawn meteor deploy $METEOR_TARGET; expect "Email:" { send $METEOR_EMAIL\r; expect eof }; expect "Password:" { send $METEOR_PASSWORD\r; expect eof }"
 
 {% endhighlight javascript %}
+
+STEP 6: Notifications
+----------------------
 
 
 [cucumber]: https://velocity.readme.io/v1.0/docs/getting-started-with-cucumber
