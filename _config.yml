@@ -1,13 +1,14 @@
 # Site settings
 title: Kaybeez
 email: kaybeez112@gmail.com
-description: 
-  Musings and ramblings of SunKay... Anything goes.. Consume at your own peril...
+description:
+  Musings ... Didn't die, won't quit ...
   Standard disclaimers apply
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://sunkay.github.io" # the base hostname & protocol for your site
 twitter_username: sunkay
 github_username:  sunkay
+theme: jekyll-theme-architect
 
 paginate:         1
 
