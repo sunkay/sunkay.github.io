@@ -16,8 +16,6 @@ paginate:         1
 # Build settings
 markdown: kramdown
 
-highlighter: pygments
-
 # Permalinks
 permalink:        pretty
 
